@@ -1,0 +1,43 @@
+body {
+  font-family: 'RalewaySemiBold', Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 40px;
+  color: #333333;
+}
+
+.topbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 40px;
+  width: 100%;
+  background-color: #3498DB;
+}
+
+.topbar-inner {
+  padding: 10px;
+  color: white;
+}
+
+.brand {
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+.leftbar {
+  position: fixed;
+  left: 0px;
+  height: calc(100% - 40px);
+  width: 250px;
+  background-color: red;
+}
+
+.rightbar {
+  position: fixed;
+  right: 0px;
+  height: calc(100% - 40px);
+  width: 250px;
+  background-color: green;
+}
