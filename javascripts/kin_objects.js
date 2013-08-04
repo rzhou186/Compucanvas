@@ -35,6 +35,7 @@ function KinObj(name) {
 
   // This is for drawn values; will append value to both dimensions
   this.addVector = function(name, val, angle) {
+  	console.log(name,val,angle,"-------------------------------")
     if (isNaN(val)) {
       if (name !== 'y') {
         this.x.knownVars.splice(this.x.knownVars.indexOf(name), 1);
