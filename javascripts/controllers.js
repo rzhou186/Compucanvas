@@ -28,6 +28,8 @@ namesController.shortToReadable = function(short_var){
       return "Initial Time"
     case "t1":
       return "Final Time"
+    case "f":
+      return "Force"
   };
 }
 
@@ -50,6 +52,8 @@ namesController.readableToShort = function(long_var){
       return "t0"
     case "Final Time":
       return "t1"
+    case "Force":
+      return "f"
   };
 }
 
@@ -144,7 +148,7 @@ varsController.drawVectorDiv = function(){
   template.find('.name').html('Vector '+vector_counter)
   template.attr('data-vector_num',vector_counter)
 
-  varTemplate = $('.vector_input_template_holder').children('.template').clone();
+  varTemplate = $('.vector_input_template_holder').children('.template').clone().addClass('vector');
   varTemplate.find('.label').text('Force')
   template.find('.vars').html(varTemplate)
 
@@ -153,9 +157,9 @@ varsController.drawVectorDiv = function(){
 }
 
 varsController.updateAllKinObjs = function(){
+  var kinObj = kinObjs[0]
   for(i=0;i<kinObjs.length;i++)
   {
-    var kinObj = kinObjs[0]
     $('.kinObj[data-kin_obj_num=0] .template').each(function(){
       if($(this).find('input').length == 1 && $(this).find('input').val() != ""){
         kinObj.addVector(namesController.readableToShort($(this).find('input').data('type').replace("-"," ")), parseFloat($(this).find('input:first').val()))}
@@ -168,9 +172,19 @@ varsController.updateAllKinObjs = function(){
       }
     })
     if ($('.Initial-Time').val().length >0)
-      kinObj.addVector('t0',parseFloat($('.Initial-Time').val()))
+      {kinObj.addVector('t0',parseFloat($('.Initial-Time').val()))}
     if ($('.Final-Time').val().length >0)
-      kinObj.addVector('t1',parseFloat($('.Final-Time').val()))
+      {kinObj.addVector('t1',parseFloat($('.Final-Time').val()))}
+    if ($('.template.vector').length > 0){
+      $('.template.vector').each(function(){
+        if($(this).find('input:first').val()){
+        kinObj.addVector(
+          ('f'),
+           parseFloat($(this).find('input:first').val()),
+           parseFloat($(this).find('input:last').val())
+        )}
+      })
+    }
   }
 }
 
