@@ -68,6 +68,7 @@ body {
   border: 1px solid #ccc;
   background-image: url("../images/linedpaper.png");
   background-repeat: repeat;
+  cursor: crosshair;
 }
 .center-box{
   padding:0;
