@@ -8,7 +8,7 @@
       if (!isUnknown(desiredVar, obj, dim)) {
         consolesController.logConsole("Variable found. Finishing computation...");
         consolesController.logConsole("Computation complete.");
-        return obj.get(desiredVar, dim);
+        return (obj.get(desiredVar, dim) + " " + namesController.shortToUnits(desiredVar));
       }
       consolesController.logConsole("Variable not known. Preparing for new computation...");
       for (z in dimensions) {
