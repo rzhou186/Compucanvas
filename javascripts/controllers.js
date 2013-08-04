@@ -93,17 +93,14 @@ canvasController.resizeCanvas = function(){
 
 consolesController.logConsole = function(message){
   $("#console").append("<p>" + message + "</p>");
-  $(".console").animate({ scrollTop : 1000000 }, "fast");
 }
 
 consolesController.logAnswer = function(message){
   $("#answer").append("<p>" + message + "</p>");
-  $(".answer").animate({ scrollTop : 1000000 }, "fast");
 }
 
 consolesController.logBacktrace = function(message){
   $("#backtrace").append("<p>" + message + "</p>");
-  $(".backtrace").animate({ scrollTop : 1000000 }, "fast");
 }
 
 varsController.genObjectVars = function(kinObjName){
