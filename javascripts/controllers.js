@@ -1,8 +1,10 @@
-canvasController = {}
-varsController = {}
-canvasModel = {}
-consolesController = {}
-namesController = {}
+var canvasController = {}
+var varsController = {}
+var canvasModel = {}
+var consolesController = {}
+var namesController = {}
+var allObjs = []
+var currentSquare = {}
 
 var counter = 0;
 
@@ -108,7 +110,7 @@ varsController.genObjectVars = function(kinObjName){
   this.drawKinObjDiv(kinObjName)
 }
 
-properties = ["Mass","Initial Position","Final Position","Initial Velocity","Final Velocity","Acceleration"]
+properties = ["Initial Position","Final Position","Initial Velocity","Final Velocity","Acceleration"]
 
 varsController.drawKinObjDiv = function(kinObjName){
   var template = $('.kin_obj_holder').find('.kinObj').clone()
@@ -116,11 +118,23 @@ varsController.drawKinObjDiv = function(kinObjName){
   template.attr('data-kin_obj_num',counter)
   
   $('.input-bar .variables').html("")
+  var varTemplate = $('.input_template_holder').children('.template').clone();
+  varTemplate.find('.label').text('Mass'+"=");
+  varTemplate.find('input').addClass("Mass").attr('data-type',"Mass")
+  template.find(".vars").append(varTemplate)
+  varsController.insertVarOpt("Mass");
+
   for(var i=0;i<properties.length;i++){
     varName = properties[i];
+<<<<<<< HEAD
     varTemplate = $('.input_template_holder').children('.template').clone();
     varTemplate.find('.label').text(varName);
     varTemplate.find('input').attr('class',varName.replace(" ","-")+" "+"var_input").attr('data-type',varName.replace(" ","-"))
+=======
+    varTemplate = $('.vector_input_template_holder').children('.template').clone();
+    varTemplate.find('.label').text(varName+"=");
+    varTemplate.find('input').addClass(varName.replace(" ","-")).attr('data-type',varName.replace(" ","-"))
+>>>>>>> c8755010e1db95f0f68dd2e48c4a64e6191b5be9
     template.find(".vars").append(varTemplate)
     varsController.insertVarOpt(varName);
   }
@@ -132,13 +146,13 @@ varsController.updateAllKinObjs = function(){
   for(i=0;i<kinObjs.length;i++)
   {
     var kinObj = kinObjs[0]
-    $('.kinObj[data-kin_obj_num=0] input').each(function(){
-      kinObj.setVar(namesController.readableToShort($(this).data('type').replace("-"," ")), parseFloat($(this).val()))
+    $('.kinObj[data-kin_obj_num=0] input magnitude').each(function(){
+      kinObj.addVector(namesController.readableToShort($(this).data('type').replace("-"," ")), parseFloat($(this).val()))
     })
     if ($('.Initial-Time').val().length >0)
-      kinObj.setVar('t0',parseFloat($('.Initial-Time').val()))
+      kinObj.addVector('t0',parseFloat($('.Initial-Time').val()))
     if ($('.Final-Time').val().length >0)
-      kinObj.setVar('t1',parseFloat($('.Final-Time').val()))
+      kinObj.addVector('t1',parseFloat($('.Final-Time').val()))
   }
 }
 
@@ -156,29 +170,54 @@ varsController.insertVarOpt = function(varName){
   $('.input-bar .variables').append($('.option_holder').find('.option').clone().html(varName).val(short_var_name))
 }
 
-canvasController.genCircle = function(){
-  var circle = new fabric.Circle({
-    radius:10,
-    fill:'black',
-    left:canvasModel.width/2,
-    top:canvasModel.height/2
-  })
-  canvasModel.canvas.add(circle);
-  canvasModel.canvas.renderAll();
+varsController.addVector = function(){
 
+}
+
+canvasController.genSquare = function(){
   kinObjName = 'Object '+counter
   varsController.genObjectVars(kinObjName)
-  kinObjs[counter] = new KinObj(kinObjName);
-  obj = kinObjs[counter]
-  // obj.setVar('t0', 0);
-  // obj.setVar('a', -9.8);
+  kinObjs[0] = new KinObj(kinObjName);
+  obj = kinObjs[0]
+  // obj.addVector('t0', 0);
+  // obj.addVector('a', -9.8, 90);
   counter++;
 }
 
-canvasController.placeLine = function(){
-  var line = new fabric.Line([0, 400, 650, 400], { 
-      stroke: "#000000", 
-      strokeWidth: 1 
-  }); 
-  canvasModel.canvas.add(line);
+canvasController.drawLine = function(cords){
+  this.canvas.beginPath();
+  this.canvas.moveTo(cords.x1, cords.y1);
+  this.canvas.lineTo(cords.x2, cords.y2);
+  this.canvas.stroke(); 
+}
+
+canvasController.drawSquare = function(cords){
+  this.canvas.beginPath();
+  this.canvas.strokeStyle = "black";
+  this.canvas.rect(cords.x1, cords.y1,Math.abs(cords.x2-cords.x1),Math.abs(cords.y2-cords.y1));
+  this.canvas.stroke();
+}
+
+canvasController.saveLine = function(cords){
+  this.canvas.clearRect(0, 0, canvas.width, canvas.height)
+  allObjs.push({type:'line',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}});
+}
+canvasController.saveSquare = function(cords){
+  this.canvas.clearRect(0, 0, canvas.width, canvas.height)
+  allObjs.push({type:'square',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}});
+  currentSquare = {type:'square',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}}
+}
+canvasController.renderAll = function(){
+  width = $('.canvas_wrapper').width()
+  for(i=0;i<allObjs.length;i++){
+    if(allObjs[i].type == 'line')
+      {this.drawLine(allObjs[i].cords)}
+    else if(allObjs[i].type == 'square')
+      {this.drawSquare(allObjs[i].cords)}
+  }
+}
+
+consolesController.clear = function(){
+  $('.rightbar').children().html("")
+
 }
