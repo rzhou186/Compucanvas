@@ -12,12 +12,15 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/layout.css">
 
     <!-- Javascripts -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.1/jquery.min.js" type="text/javascript"></script>
+    <script src="javascripts/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="javascripts/underscore.js" type="text/javascript"></script>
-    <script src="javascripts/objects.js" type="text/javascript"></script>
+    <script src="javascripts/controllers.js" type="text/javascript"></script>
+    <script src="javascripts/kin_objects.js" type="text/javascript"></script>
     <script src="javascripts/formulas.js" type="text/javascript"></script>
     <script src="javascripts/ai.js" type="text/javascript"></script>
     <script src="javascripts/app.js" type="text/javascript"></script>
+    <script src="javascripts/fabric.js"></script>
+    
 
   </head>
 
@@ -35,9 +38,11 @@
       <div class="row">
         <div class="col-lg-3">
           <div class="known-vars box">
+            <h4>Environment Variables<h4>
+              <div class="label">Initial Time=</div><input class="Initial-Time var_input" value=0></input>
+              <div class="label">Final Time=</div><input class="Final-Time var_input"></input>
             <h4>Object Properties</h4>
           </div>
-          <div class="unknown-vars box"></div>
         </div>
         <div class="col-lg-6 center-box">
           <div class="toolbox">
@@ -48,13 +53,20 @@
           <div class="canvas_wrapper">
             <canvas id="canvas"></canvas>
           </div>
-          <div class="input-bar"></div>
+          <div class="input-bar">
+            Compute
+            <select class="kinObjects">
+            </select>
+            's
+            <select class="variables"></select>
+            <button id="compute">Compute!</button>
+          </div>
         </div>
         <div class="col-lg-3">
           <div class="rightbar">
             <div class="console small_box"></div>
             <div class="answer small_box"></div>
-            <div class="explanation small_box"></div>
+            <div class="backtrace small_box"></div>
           </div>
         </div>
       </div>
@@ -65,7 +77,15 @@
         <input class="var_input"></input>
       </div>
     </div>
+    <div class="option_holder hidden">
+      <option class="option">
+      </option>
+    </div>
+    <div class="kin_obj_holder hidden">
+      <div class="kinObj">
+        <h4 class="name"></h4>
+        <div class="vars">
+      </div>
+    </div>
   </body>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.2.0/fabric.all.min.js"></script>
-  <script src="javascripts/listeners.js" type="text/javascript"></script>
 </html>

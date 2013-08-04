@@ -15,7 +15,7 @@
   z-index: 9999;
 }
 .var_input{
-  width:20px;
+  width:40px;
 }
 h4{
   margin-top:0;
@@ -23,4 +23,7 @@ h4{
 }
 .template{
   padding-left:5px;
+}
+.compute{
+  float:right;
 }

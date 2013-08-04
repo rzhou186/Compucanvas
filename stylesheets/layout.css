@@ -16,24 +16,34 @@ body {
 }
 
 .box{
-  height:300px;
+  overflow: auto;
+  height:600px;
   border: 1px solid #ccc;
   border-top:none;
 }
 .small_box{
-  height:200px;
   border: 1px solid #ccc;
   border-top:none;
+  overflow: auto;
+}
+.answer{
+  height: 100px;
+}
+.console{
+  height:250px;
+}
+.backtrace{
+  height:250px;
 }
 .input-bar{
-  height:150px;
+  height:50px;
   border: 1px solid #ccc;
 }
 .row{
   width:100%;
 }
 .canvas_wrapper{
-  height:450px;
+  height:550px;
 }
 .center-box{
   padding:0;
