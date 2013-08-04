@@ -60,7 +60,6 @@ function KinObj(name) {
         $('input' + '.' + namesController.shortToReadable(name).replace(' ', '-') + ".angle").val(angle);
        	console.log(xComponent,yComponent)
       }
-
       if (!_.find(this.x.knownVars, function(known) { return name === known; })) {
         if (name !== 'y') {
           this.x.knownVars.push(name);

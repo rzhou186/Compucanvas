@@ -126,15 +126,9 @@ varsController.drawKinObjDiv = function(kinObjName){
 
   for(var i=0;i<properties.length;i++){
     varName = properties[i];
-<<<<<<< HEAD
-    varTemplate = $('.input_template_holder').children('.template').clone();
-    varTemplate.find('.label').text(varName);
-    varTemplate.find('input').attr('class',varName.replace(" ","-")+" "+"var_input").attr('data-type',varName.replace(" ","-"))
-=======
     varTemplate = $('.vector_input_template_holder').children('.template').clone();
     varTemplate.find('.label').text(varName+"=");
     varTemplate.find('input').addClass(varName.replace(" ","-")).attr('data-type',varName.replace(" ","-"))
->>>>>>> c8755010e1db95f0f68dd2e48c4a64e6191b5be9
     template.find(".vars").append(varTemplate)
     varsController.insertVarOpt(varName);
   }
@@ -178,16 +172,12 @@ varsController.insertVarOpt = function(varName){
   $('.input-bar .variables').append($('.option_holder').find('.option').clone().html(varName).val(short_var_name))
 }
 
-varsController.addVector = function(){
-
-}
-
 canvasController.genSquare = function(){
   kinObjName = 'Object '+counter
   varsController.genObjectVars(kinObjName)
   kinObjs[0] = new KinObj(kinObjName);
   obj = kinObjs[0]
-  // obj.addVector('t0', 0);
+  obj.addVector('t0', 0);
   // obj.addVector('a', -9.8, 90);
   counter++;
 }
