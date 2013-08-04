@@ -140,8 +140,16 @@ varsController.updateAllKinObjs = function(){
   for(i=0;i<kinObjs.length;i++)
   {
     var kinObj = kinObjs[0]
-    $('.kinObj[data-kin_obj_num=0] input magnitude').each(function(){
-      kinObj.addVector(namesController.readableToShort($(this).data('type').replace("-"," ")), parseFloat($(this).val()))
+    $('.kinObj[data-kin_obj_num=0] .template').each(function(){
+      if($(this).find('input').length == 1){
+        kinObj.addVector(namesController.readableToShort($(this).find('input').data('type').replace("-"," ")), parseFloat($(this).find('input:first').val()))}
+      else{
+        kinObj.addVector(
+          namesController.readableToShort($(this).find('input:first').data('type').replace("-"," ")),
+           parseFloat($(this).find('input:first').val()),
+           parseFloat($(this).find('input:last').val())
+        )
+      }
     })
     if ($('.Initial-Time').val().length >0)
       kinObj.addVector('t0',parseFloat($('.Initial-Time').val()))
@@ -164,17 +172,13 @@ varsController.insertVarOpt = function(varName){
   $('.input-bar .variables').append($('.option_holder').find('.option').clone().html(varName).val(short_var_name))
 }
 
-varsController.addVector = function(){
-
-}
-
 canvasController.genSquare = function(){
   kinObjName = 'Object '+counter
   varsController.genObjectVars(kinObjName)
   kinObjs[0] = new KinObj(kinObjName);
   obj = kinObjs[0]
   obj.addVector('t0', 0);
-  obj.addVector('a', -9.8, 90);
+  // obj.addVector('a', -9.8, 90);
   counter++;
 }
 
