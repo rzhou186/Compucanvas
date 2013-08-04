@@ -84,7 +84,7 @@ varsController.drawKinObjDiv = function(kinObjName){
     varName = properties[i];
     varTemplate = $('.input_template_holder').children('.template').clone();
     varTemplate.find('.label').text(varName+"=");
-    varTemplate.find('input').attr('class',varName.replace(" ","-")+" "+"var_input")
+    varTemplate.find('input').attr('class',varName.replace(" ","-")+" "+"var_input").attr('data-type',varName.replace(" ","-"))
     template.find(".vars").append(varTemplate)
     varsController.insertVarOpt(varName);
   }
@@ -95,16 +95,15 @@ varsController.drawKinObjDiv = function(kinObjName){
 varsController.updateAllKinObjs = function(){
   for(i=0;i<kinObjs.length;i++)
   {
-    var kinObj = kinObj[0]
-    $('.kinObj[data-kin_obj_num='+i+']')
+    var kinObj = kinObjs[0]
+    $('.kinObj[data-kin_obj_num=0] input').filter(function() { return this.value != ""; }).each(function(){
+      kinObj.setVar(namesController.readableToShort($(this).data('type').replace("-"," ")),$(this).val())
+    })
+    if ($('.Initial-Time').val().length >0)
+      kinObj.setVar('t0',parseInt($('.Initial-Time').val()))
+    if ($('.Final-Time').val().length >0)
+      kinObj.setVar('t1',parseInt($('.Final-Time').val()))
   }
-
-  kinObj.setVar('t0', 0);
-  kinObj.setVar('t1', 5);
-  kinObj.setVar('v0', 0);
-  kinObj.setVar('v1', -49);
-  kinObj.setVar('a', -9.8);
-  kinObj.setVar('m', 5);
 }
 
 varsController.insertObjectOpt = function(kinObjName){

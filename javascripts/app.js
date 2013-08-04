@@ -24,6 +24,7 @@ $(document).ready(function(){
 
     // update all variables
     varsController.updateAllKinObjs();
+    console.log(kinObjs,"KIND OBJS HERE")
 
     // error checking
 
