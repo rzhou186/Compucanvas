@@ -36,7 +36,6 @@ function getDesiredVariable() {
   return $(".variables :selected").val();
 }
 
-
 $(document).ready(function () {
   var mouse_start;
   canvas = document.getElementById('canvas')
@@ -277,5 +276,3 @@ console.log(computeFor('v1', kinObj));
 console.log(computeFor('v1', kinObj, 'x'));
 console.log(computeFor('v1', kinObj, 'y'));
 
-
-// Add some way to map solution to correct units
