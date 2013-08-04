@@ -170,7 +170,7 @@ canvasController.genCircle = function(){
   varsController.genObjectVars(kinObjName)
   kinObjs[counter] = new KinObj(kinObjName);
   obj = kinObjs[counter]
-  obj.setVar('t0', 0);
+  // obj.setVar('t0', 0);
   // obj.setVar('a', -9.8);
   counter++;
 }

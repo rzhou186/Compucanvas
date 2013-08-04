@@ -48,23 +48,3 @@ function getDesiredKinObj() {
 function getDesiredVariable() {
   return $(".variables :selected").val();
 }
-
-// Testing for now
-// (function() {
-//   kinObj = new KinObj('kinObj');
-//   kinObj.setVar('t0', 0);
-//   kinObj.setVar('t1', 5);
-//   kinObj.setVar('v0', 0);
-//   kinObj.setVar('v1', -49);
-//   kinObj.setVar('a', -9.8);
-//   kinObj.setVar('m', 5);
-
-//   console.log("Known variables: ");
-//   for (x in kinObj.knownVars) {
-//     console.log(kinObj.knownVars[x] + " = " + kinObj[kinObj.knownVars[x]]);
-//   }
-
-//   console.log('The solution is:', computeFor('v1', kinObj));
-// })
-
-// Add some way to map solution to correct units
