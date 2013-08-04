@@ -1,6 +1,3 @@
-// Provides a global variable with a list of all objects
-// Defines each object and its associated variables
-
 function Thing(name) {
   this.name = name;
   this.knownVars = [];
@@ -10,4 +7,3 @@ function Thing(name) {
     this[name] = val;
   };
 };
-
