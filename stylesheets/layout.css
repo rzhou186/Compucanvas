@@ -1,8 +1,14 @@
 body {
-  font-family: 'RalewaySemiBold', Helvetica, sans-serif;
+  font-family: 'RalewayBold', Helvetica, sans-serif;
   font-size: 16px;
-  line-height: 20px;
   color: #333333;
+  padding: 40px 0px 40px 0px;
+  /*background-image: url("../images/tweed.png");
+  background-repeat: repeat;*/
+}
+
+.row {
+  margin: 0 auto;
 }
 
 .topbar {
@@ -17,7 +23,7 @@ body {
 
 .box{
   overflow: auto;
-  height:600px;
+  height:670px;
   border: 1px solid #ccc;
   border-top:none;
 }
@@ -26,24 +32,35 @@ body {
   border-top:none;
   overflow: auto;
 }
+.small_box .contents {
+  font-family: 'RalewayRegular', Helvetica, sans-serif;
+  padding: 10px;
+}
 .answer{
   height: 100px;
 }
 .console{
-  height:250px;
+  height:320px;
 }
 .backtrace{
   height:250px;
 }
 .input-bar{
   height:50px;
+  padding-top: 7px;
+  text-align: center;
   border: 1px solid #ccc;
 }
 .row{
   width:100%;
 }
 .canvas_wrapper{
-  height:550px;
+  height:610px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  background-image: url("../images/linedpaper.png");
+  background-repeat: repeat;
 }
 .center-box{
   padding:0;

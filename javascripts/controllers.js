@@ -89,18 +89,18 @@ canvasController.resizeCanvas = function(){
   // Clear console, answer, and explanation?
 
 consolesController.logConsole = function(message){
-  $(".console").append("<p>" + message + "</p>");
-  $(".console").animate({ scrollTop : 1000000 }, "fast");
+  $("#console").append("<p>" + message + "</p>");
+  $("#console").animate({ scrollTop : 1000000 }, "fast");
 }
 
 consolesController.logAnswer = function(message){
-  $(".answer").append("<p>" + message + "</p>");
-  $(".answer").animate({ scrollTop : 1000000 }, "fast");
+  $("#answer").append("<p>" + message + "</p>");
+  $("#answer").animate({ scrollTop : 1000000 }, "fast");
 }
 
 consolesController.logBacktrace = function(message){
-  $(".backtrace").append("<p>" + message + "</p>");
-  $(".backtrace").animate({ scrollTop : 1000000 }, "fast");
+  $("#backtrace").append("<p>" + message + "</p>");
+  $("#backtrace").animate({ scrollTop : 1000000 }, "fast");
 }
 
 varsController.genObjectVars = function(kinObjName){
@@ -119,7 +119,7 @@ varsController.drawKinObjDiv = function(kinObjName){
   for(var i=0;i<properties.length;i++){
     varName = properties[i];
     varTemplate = $('.input_template_holder').children('.template').clone();
-    varTemplate.find('.label').text(varName+"=");
+    varTemplate.find('.label').text(varName);
     varTemplate.find('input').attr('class',varName.replace(" ","-")+" "+"var_input").attr('data-type',varName.replace(" ","-"))
     template.find(".vars").append(varTemplate)
     varsController.insertVarOpt(varName);
