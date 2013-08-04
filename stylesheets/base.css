@@ -10,7 +10,10 @@
 }
 
 .var_input{
+  font-family: 'RalewaySemiBold', Helvetica, sans-serif;
   width:40px;
+  height: 21px;
+  font-size: 12px;
 }
 
 .heading{
@@ -35,5 +38,16 @@ select {
 }
 
 .name {
-  margin: 10px 0px 0px 10px;
+  margin: 10px 0px 0px 0px;
+  text-align: center;
+}
+
+.objectInputs {
+  margin-right: 5px; 
+  font-family: 'RalewayBold', Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.singletonInput {
+  width: 122px;
 }
