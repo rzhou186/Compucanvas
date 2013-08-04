@@ -24,6 +24,8 @@ $(document).ready(function(){
     // run computation
     consolesController.logAnswer('The solution is ' + computeFor(desiredVar, desiredKinObj) + ".");
 
+    // TODO come up with better way of resetting desiredKinObj
+    kinObjs[0] = new KinObj(desiredKinObj.name);
   });
 });
 
