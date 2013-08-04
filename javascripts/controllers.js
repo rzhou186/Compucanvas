@@ -110,7 +110,7 @@ varsController.genObjectVars = function(kinObjName){
   this.drawKinObjDiv(kinObjName)
 }
 
-properties = ["Mass","Initial Position","Final Position","Initial Velocity","Final Velocity","Acceleration"]
+properties = ["Initial Position","Final Position","Initial Velocity","Final Velocity","Acceleration"]
 
 varsController.drawKinObjDiv = function(kinObjName){
   var template = $('.kin_obj_holder').find('.kinObj').clone()
@@ -118,11 +118,17 @@ varsController.drawKinObjDiv = function(kinObjName){
   template.attr('data-kin_obj_num',counter)
   
   $('.input-bar .variables').html("")
+  var varTemplate = $('.input_template_holder').children('.template').clone();
+  varTemplate.find('.label').text('Mass'+"=");
+  varTemplate.find('input').addClass("Mass").attr('data-type',"Mass")
+  template.find(".vars").append(varTemplate)
+  varsController.insertVarOpt("Mass");
+
   for(var i=0;i<properties.length;i++){
     varName = properties[i];
-    varTemplate = $('.input_template_holder').children('.template').clone();
+    varTemplate = $('.vector_input_template_holder').children('.template').clone();
     varTemplate.find('.label').text(varName+"=");
-    varTemplate.find('input').attr('class',varName.replace(" ","-")+" "+"var_input").attr('data-type',varName.replace(" ","-"))
+    varTemplate.find('input').addClass(varName.replace(" ","-")).attr('data-type',varName.replace(" ","-"))
     template.find(".vars").append(varTemplate)
     varsController.insertVarOpt(varName);
   }
@@ -134,7 +140,7 @@ varsController.updateAllKinObjs = function(){
   for(i=0;i<kinObjs.length;i++)
   {
     var kinObj = kinObjs[0]
-    $('.kinObj[data-kin_obj_num=0] input').each(function(){
+    $('.kinObj[data-kin_obj_num=0] input magnitude').each(function(){
       kinObj.addVector(namesController.readableToShort($(this).data('type').replace("-"," ")), parseFloat($(this).val()))
     })
     if ($('.Initial-Time').val().length >0)
@@ -158,13 +164,17 @@ varsController.insertVarOpt = function(varName){
   $('.input-bar .variables').append($('.option_holder').find('.option').clone().html(varName).val(short_var_name))
 }
 
+varsController.addVector = function(){
+
+}
+
 canvasController.genSquare = function(){
   kinObjName = 'Object '+counter
   varsController.genObjectVars(kinObjName)
   kinObjs[0] = new KinObj(kinObjName);
   obj = kinObjs[0]
   obj.addVector('t0', 0);
-  obj.addVector('a', -9.8);
+  obj.addVector('a', -9.8, 90);
   counter++;
 }
 

@@ -46,13 +46,18 @@ function KinObj(name) {
       }
     } else {
       // TODO this line needs to be double checked for accuracy
-      $('input' + '.' + namesController.shortToReadable(name).replace(' ', '-')).val(val);
+
+      
       if (angle === undefined) {
         xComponent = val;
         yComponent = val;
+        $('input' + '.' + namesController.shortToReadable(name).replace(' ', '-')).val(val);
       } else {
         xComponent = val * Math.cos(convertToRadians(angle));
         yComponent = val * Math.sin(convertToRadians(angle));
+        $('input' + '.' + namesController.shortToReadable(name).replace(' ', '-') + ".magnitude").val(val);
+        $('input' + '.' + namesController.shortToReadable(name).replace(' ', '-') + ".angle").val(angle);
+       	console.log(xComponent,yComponent)
       }
 
       if (!_.find(this.x.knownVars, function(known) { return name === known; })) {
