@@ -202,9 +202,6 @@ canvasController.drawLine = function(cords){
   this.canvas.beginPath();
   this.canvas.moveTo(cords.x1, cords.y1);
   this.canvas.lineTo(cords.x2, cords.y2);
-  this.canvas.lineTo(cords.x2-40*Math.cos(convertToRadians(45)), cords.y2+40*Math.sin(convertToRadians(45)));
-  this.canvas.lineTo(cords.x2, cords.y2);
-  this.canvas.lineTo(cords.x2+40*Math.cos(convertToRadians(30)), cords.y2+40*Math.sin(convertToRadians(30)));
   this.canvas.stroke(); 
 }
 
