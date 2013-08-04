@@ -267,12 +267,3 @@ $(document).ready(function () {
 
 })
 
-kinObj = new KinObj('obj');
-kinObj.addVector('v0', 0, 0);
-kinObj.addVector('a', -9.8, 90);
-kinObj.addVector('t0', 0);
-kinObj.addVector('t1', 5);
-console.log(computeFor('v1', kinObj));
-console.log(computeFor('v1', kinObj, 'x'));
-console.log(computeFor('v1', kinObj, 'y'));
-

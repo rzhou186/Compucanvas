@@ -48,7 +48,7 @@ function Formula(varNames, expression) {
   );
   formulas.push(formula);
   formula.functions.push(function(o, dim) {
-    var answer = o[dim].x1 - (o[dim].v0 * (o[dim].t1 - o[dim].t0)) + (0.5 * o[dim].a * Math.pow((o[dim].t1 - o[dim].t0), 2));
+    var answer = o[dim].x1 - (o[dim].v0 * (o[dim].t1 - o[dim].t0)) - (0.5 * o[dim].a * Math.pow((o[dim].t1 - o[dim].t0), 2));
     o.setVector(formulas[1].varNames[0], answer, dim);
     return answer;
   });
@@ -122,4 +122,26 @@ function Formula(varNames, expression) {
     o.setVector(formulas[2].varNames[4], answer, dim);
     return answer;
   });
+  // F = m * a
+  formula = new Formula(
+    ['f','m','a'],
+    "f = m * a"
+  );
+  formulas.push(formula);
+  formula.functions.push(function(o,dim) {
+    var answer = o[dim].m * o[dim].a;
+    o.setVector(formulas[3].varNames[0],answer,dim);
+    return answer;
+  });
+  formula.functions.push(function(o,dim) {
+    var answer = o[dim].f / o[dim].a;
+    o.setVector(formulas[3].varNames[1],answer,dim);
+    return answer;
+  });
+  formula.functions.push(function(o,dim) {
+    var answer = o[dim].f / o[dim].m;
+    o.setVector(formulas[3].varNames[2],answer,dim);
+    return answer;
+  });
+
 })()

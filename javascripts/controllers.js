@@ -73,6 +73,8 @@ namesController.shortToUnits = function(short_var){
     case "t0":
     case "t1":
       return "s"
+    case "f":
+      return "N"
     default:
       return ""
   };
@@ -205,15 +207,23 @@ canvasController.genSquare = function(){
   kinObjs[0] = new KinObj(kinObjName);
   obj = kinObjs[0]
   obj.addVector('t0', 0);
-  // obj.addVector('a', -9.8, 90);
   counter++;
 }
 
 canvasController.drawLine = function(cords){
   this.canvas.beginPath();
-  this.canvas.moveTo(cords.x1, cords.y1);
-  this.canvas.lineTo(cords.x2, cords.y2);
+  canvas_arrow(this.canvas,cords.x1,cords.y1,cords.x2,cords.y2)
   this.canvas.stroke(); 
+}
+
+function canvas_arrow(context, fromx, fromy, tox, toy){
+  var headlen = 10;   // length of head in pixels
+  var angle = Math.atan2(toy-fromy,tox-fromx);
+  context.moveTo(fromx, fromy);
+  context.lineTo(tox, toy);
+  context.lineTo(tox-headlen*Math.cos(angle-Math.PI/6),toy-headlen*Math.sin(angle-Math.PI/6));
+  context.moveTo(tox, toy);
+  context.lineTo(tox-headlen*Math.cos(angle+Math.PI/6),toy-headlen*Math.sin(angle+Math.PI/6));
 }
 
 canvasController.drawSquare = function(cords){
