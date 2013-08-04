@@ -36,7 +36,6 @@ function getDesiredVariable() {
   return $(".variables :selected").val();
 }
 
-
 $(document).ready(function () {
   var mouse_start;
   canvas = document.getElementById('canvas')
@@ -273,8 +272,7 @@ kinObj.addVector('v0', 0, 0);
 kinObj.addVector('a', -9.8, 90);
 kinObj.addVector('t0', 0);
 kinObj.addVector('t1', 5);
+console.log(computeFor('v1', kinObj));
+console.log(computeFor('v1', kinObj, 'x'));
 console.log(computeFor('v1', kinObj, 'y'));
-console.log(kinObj.y.v1);
 
-
-// Add some way to map solution to correct units

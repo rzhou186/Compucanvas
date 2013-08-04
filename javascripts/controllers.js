@@ -91,18 +91,18 @@ canvasController.resizeCanvas = function(){
   // Clear console, answer, and explanation?
 
 consolesController.logConsole = function(message){
-  $(".console").append("<p>" + message + "</p>");
-  $(".console").animate({ scrollTop : 1000000 }, "fast");
+  $("#console").append("<p>" + message + "</p>");
+  $("#console").animate({ scrollTop : 1000000 }, "fast");
 }
 
 consolesController.logAnswer = function(message){
-  $(".answer").append("<p>" + message + "</p>");
-  $(".answer").animate({ scrollTop : 1000000 }, "fast");
+  $("#answer").append("<p>" + message + "</p>");
+  $("#answer").animate({ scrollTop : 1000000 }, "fast");
 }
 
 consolesController.logBacktrace = function(message){
-  $(".backtrace").append("<p>" + message + "</p>");
-  $(".backtrace").animate({ scrollTop : 1000000 }, "fast");
+  $("#backtrace").append("<p>" + message + "</p>");
+  $("#backtrace").animate({ scrollTop : 1000000 }, "fast");
 }
 
 varsController.genObjectVars = function(kinObjName){
@@ -126,9 +126,15 @@ varsController.drawKinObjDiv = function(kinObjName){
 
   for(var i=0;i<properties.length;i++){
     varName = properties[i];
+<<<<<<< HEAD
+    varTemplate = $('.input_template_holder').children('.template').clone();
+    varTemplate.find('.label').text(varName);
+    varTemplate.find('input').attr('class',varName.replace(" ","-")+" "+"var_input").attr('data-type',varName.replace(" ","-"))
+=======
     varTemplate = $('.vector_input_template_holder').children('.template').clone();
     varTemplate.find('.label').text(varName+"=");
     varTemplate.find('input').addClass(varName.replace(" ","-")).attr('data-type',varName.replace(" ","-"))
+>>>>>>> c8755010e1db95f0f68dd2e48c4a64e6191b5be9
     template.find(".vars").append(varTemplate)
     varsController.insertVarOpt(varName);
   }
@@ -181,8 +187,8 @@ canvasController.genSquare = function(){
   varsController.genObjectVars(kinObjName)
   kinObjs[0] = new KinObj(kinObjName);
   obj = kinObjs[0]
-  obj.addVector('t0', 0);
-  obj.addVector('a', -9.8, 90);
+  // obj.addVector('t0', 0);
+  // obj.addVector('a', -9.8, 90);
   counter++;
 }
 

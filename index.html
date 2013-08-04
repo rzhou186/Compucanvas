@@ -4,6 +4,7 @@
   <head>
 
     <title>Compucanvas</title>
+    <link rel="icon" type="image/png" href="images/favicon.ico">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
@@ -37,10 +38,13 @@
       <div class="row">
         <div class="col-lg-3">
           <div class="known-vars box">
-            <h4>Environment Variables<h4>
-              <div class="label">Initial Time=</div><input class="Initial-Time var_input" value=0></input>
-              <div class="label">Final Time=</div><input class="Final-Time var_input"></input>
-            <h4>Object Properties</h4>
+            <div class="heading">Environment Variables</div>
+              <div class="contents">
+                <div class="label">Initial Time</div><input class="Initial-Time var_input"></input>
+                <br>
+                <div class="label">Final Time</div><input class="Final-Time var_input"></input>
+              </div>
+            <div class="heading">Object Variables</div>
           </div>
         </div>
         <div class="col-lg-6 center-box">
@@ -49,23 +53,26 @@
           </div>
           <div class="input-bar">
             Compute
+            <select class="variables"></select>
+            of
             <select class="kinObjects">
             </select>
-            's
-            <select class="variables"></select>
-            <button id="compute">Compute!</button>
+            <button id="compute" class="btn btn-primary">COMPUTE!</button>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="rightbar">
             <div class="console small_box">
-              <h4>Console<h4>
+              <div class="heading">Console</div>
+              <div id="console" class="contents"></div>
             </div>
             <div class="answer small_box">
-              <h4>Solution<h4>
+              <div class="heading">Solution</div>
+              <div id="answer" class="contents"></div>
             </div>
             <div class="backtrace small_box">
-              <h4>Backtrace<h4>
+              <div class="heading">Backtrace</div>
+              <div id="backtrace" class="contents"></div>
             </div>
           </div>
         </div>
@@ -90,7 +97,7 @@
     </div>
     <div class="kin_obj_holder hidden">
       <div class="kinObj">
-        <h4 class="name"></h4>
+        <div class="heading" class="name"></div>
         <div class="vars">
       </div>
     </div>
