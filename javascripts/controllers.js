@@ -127,8 +127,9 @@ varsController.drawKinObjDiv = function(kinObjName){
   varTemplate.find('input').addClass("Mass").attr('data-type',"Mass")
   template.find(".vars").append(varTemplate)
   varsController.insertVarOpt("Mass");
+  varsController.insertVarOpt("Final Time");
 
-  for(var i=0;i<properties.length;i++){
+  for(var i=0;i<properties.length-1;i++){
     varName = properties[i];
     varTemplate = $('.vector_input_template_holder').children('.template').clone();
     varTemplate.find('.label').text(varName);
