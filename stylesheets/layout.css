@@ -36,8 +36,8 @@ body {
   overflow: auto;
   background-color: #ffffff;
 }
-.small_box .contents {
-  font-family: 'RalewayRegular', Helvetica, sans-serif;
+.contents {
+  font-family: 'RalewaySemiBold', Helvetica, sans-serif;
   padding: 10px;
 }
 .answer{
