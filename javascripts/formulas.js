@@ -4,7 +4,6 @@ function Formula(varNames, expression) {
   this.varNames = varNames;
   this.expression = expression;
   this.functions = [];
-  _this = this;
 };
 
 (function () {
@@ -19,27 +18,27 @@ function Formula(varNames, expression) {
   formulas.push(formula);
   formula.functions.push(function(o) {
     var answer = o.v1 - (o.a * (o.t1 - o.t0));
-    o.setVar(_this.varNames[0], answer);
+    o.setVar(formulas[0].varNames[0], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = o.v0 + (o.a * (o.t1 - o.t0));
-    o.setVar(_this.varNames[1], answer);
+    o.setVar(formulas[0].varNames[1], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = (o.v1 - o.v0) / (o.t1 - o.t0);
-    o.setVar(_this.varNames[2], answer);
+    o.setVar(formulas[0].varNames[2], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = o.t1 - ((o.v1 - o.v0) / o.a);
-    o.setVar(_this.varNames[3], answer);
+    o.setVar(formulas[0].varNames[3], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = o.t0 + ((o.v1 - o.v0) / o.a);
-    o.setVar(_this.varNames[4], answer);
+    o.setVar(formulas[0].varNames[4], answer);
     return answer;
   });
 
@@ -51,22 +50,22 @@ function Formula(varNames, expression) {
   formulas.push(formula);
   formula.functions.push(function(o) {
     var answer = o.x1 - (o.v0 * (o.t1 - o.t0)) + (0.5 * o.a * Math.pow((o.t1 - o.t0), 2));
-    o.setVar(_this.varNames[0], answer);
+    o.setVar(formulas[1].varNames[0], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = o.x0 + (o.v0 * (o.t1 - o.t0)) + (0.5 * o.a * Math.pow((o.t1 - o.t0), 2));
-    o.setVar(_this.varNames[1], answer);
+    o.setVar(formulas[1].varNames[1], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = (o.x1 - o.x0 - (0.5 * o.a * Math.pow((o.t1 - o.t0), 2))) / (o.t1 - o.t0);
-    o.setVar(_this.varNames[2], answer);
+    o.setVar(formulas[1].varNames[2], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = (o.x1 - o.x0 - (o.v0 * (o.t1 - o.t0))) / (0.5 * Math.pow((o.t1 - o.t0), 2));
-    o.setVar(_this.varNames[3], answer);
+    o.setVar(formulas[1].varNames[3], answer);
     return answer;
   });
   formula.functions.push(function(o) {
@@ -78,7 +77,7 @@ function Formula(varNames, expression) {
       answer = o.t1 - possibilityOne;
     }
     else answer = o.t1 - possibilityTwo;
-    o.setVar(_this.varNames[4], answer);
+    o.setVar(formulas[1].varNames[4], answer);
     return answer;
   });
   formula.functions.push(function(o) {
@@ -90,7 +89,7 @@ function Formula(varNames, expression) {
       answer = o.t0 + possibilityOne;
     }
     else answer = o.t0 + possibilityTwo;
-    o.setVar(_this.varNames[5], answer);
+    o.setVar(formulas[1].varNames[5], answer);
     return answer;
   });
 
@@ -102,27 +101,27 @@ function Formula(varNames, expression) {
   formulas.push(formula);
   formula.functions.push(function(o) {
     var answer = Math.sqrt(Math.pow(o.v1, 2) - ((2 * o.a) * (o.x1 - o.x0)));
-    o.setVar(_this.varNames[0], answer);
+    o.setVar(formulas[2].varNames[0], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = Math.sqrt(Math.pow(o.v0, 2) + ((2 * o.a) * (o.x1 - o.x0)));
-    o.setVar(_this.varNames[1], answer);
+    o.setVar(formulas[2].varNames[1], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = (Math.pow(o.v1, 2) - Math.pow(o.v0, 2)) / (2 * (o.x1 - o.x0));
-    o.setVar(_this.varNames[2], answer);
+    o.setVar(formulas[2].varNames[2], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = o.x1 - ((Math.pow(o.v1, 2) - Math.pow(o.v0, 2)) / (2 * o.a));
-    o.setVar(_this.varNames[3], answer);
+    o.setVar(formulas[2].varNames[3], answer);
     return answer;
   });
   formula.functions.push(function(o) {
     var answer = o.x0 + ((Math.pow(o.v1, 2) - Math.pow(o.v0, 2)) / (2 * o.a));
-    o.setVar(_this.varNames[4], answer);
+    o.setVar(formulas[2].varNames[4], answer);
     return answer;
   });
 

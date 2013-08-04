@@ -3,6 +3,7 @@ varsController = {}
 canvasModel = {}
 consolesController = {}
 namesController = {}
+allObjs = []
 
 var counter = 0;
 
@@ -47,6 +48,27 @@ namesController.readableToShort = function(long_var){
       return "t0"
     case "Final Time":
       return "t1"
+  };
+}
+
+namesController.shortToUnits = function(short_var){
+  switch(short_var)
+  {
+    case "m":
+      return "kg"
+    case "v0":
+    case "v1":
+      return "m/s"
+    case "a":
+      return "m/s^2"
+    case "x0":
+    case "x1":
+      return "m"
+    case "t0":
+    case "t1":
+      return "s"
+    default:
+      return ""
   };
 }
 
@@ -135,29 +157,58 @@ varsController.insertVarOpt = function(varName){
   $('.input-bar .variables').append($('.option_holder').find('.option').clone().html(varName).val(short_var_name))
 }
 
-canvasController.genCircle = function(){
-  var circle = new fabric.Circle({
-    radius:10,
-    fill:'black',
-    left:canvasModel.width/2,
-    top:canvasModel.height/2
-  })
-  canvasModel.canvas.add(circle);
-  canvasModel.canvas.renderAll();
+canvasController.genSquare = function(){
+  // var circle = new fabric.Circle({
+  //   radius:10,
+  //   fill:'black',
+  //   left:canvasModel.width/2,
+  //   top:canvasModel.height/2
+  // })
+  // canvasModel.canvas.add(circle);
+  // canvasModel.canvas.renderAll();
 
   kinObjName = 'Object '+counter
   varsController.genObjectVars(kinObjName)
   kinObjs[counter] = new KinObj(kinObjName);
   obj = kinObjs[counter]
   obj.setVar('t0', 0);
-  obj.setVar('a', -9.8);
+  // obj.setVar('a', -9.8);
   counter++;
 }
 
-canvasController.placeLine = function(){
-  var line = new fabric.Line([0, 400, 650, 400], { 
-      stroke: "#000000", 
-      strokeWidth: 1 
-  }); 
-  canvasModel.canvas.add(line);
+canvasController.drawLine = function(cords){
+  this.canvas.beginPath();
+  this.canvas.moveTo(cords.x1, cords.y1);
+  this.canvas.lineTo(cords.x2, cords.y2);
+  this.canvas.stroke(); 
+}
+
+canvasController.drawSquare = function(cords){
+  this.canvas.beginPath();
+  this.canvas.strokeStyle = "black";
+  this.canvas.rect(cords.x1, cords.y1,Math.abs(cords.x2-cords.x1),Math.abs(cords.y2-cords.y1));
+  this.canvas.stroke();
+}
+
+canvasController.saveLine = function(cords){
+  this.canvas.clearRect(0, 0, canvas.width, canvas.height)
+  allObjs.push({type:'line',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}});
+}
+canvasController.saveSquare = function(cords){
+  this.canvas.clearRect(0, 0, canvas.width, canvas.height)
+  allObjs.push({type:'square',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}});
+}
+canvasController.renderAll = function(){
+  width = $('.canvas_wrapper').width()
+  for(i=0;i<allObjs.length;i++){
+    if(allObjs[i].type == 'line')
+      {this.drawLine(allObjs[i].cords)}
+    else if(allObjs[i].type == 'square')
+      {this.drawSquare(allObjs[i].cords)}
+  }
+}
+
+consolesController.clear = function(){
+  $('.rightbar').children().html("")
+
 }
