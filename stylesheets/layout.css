@@ -38,10 +38,12 @@ body {
 }
 .contents {
   font-family: 'RalewaySemiBold', Helvetica, sans-serif;
+  font-size: 15px;
   padding: 5px;
 }
 .answer{
   height: 100px;
+  color: #3498DB;
 }
 .console{
   height:320px;
