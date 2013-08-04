@@ -4,6 +4,8 @@ function KinObj(name) {
   this.name = name;
   this.x = {knownVars: []};
   this.y = {knownVars: []};
+
+/*
   this.setVar = function(name, val) {
     if (!_.find(this.knownVars, function(known) { return name === known; })) {
       this.knownVars.push(name);
@@ -16,6 +18,7 @@ function KinObj(name) {
     }
     else $('input'+"."+namesController.shortToReadable(name).replace(" ","-")).val(this[name])
   };
+*/
 
   // This is for computed dimensional values; will only set on specified dimension
   this.setVector = function(name, val, dim) {
@@ -33,10 +36,14 @@ function KinObj(name) {
   // This is for drawn values; will append value to both dimensions
   this.addVector = function(name, val, angle) {
     if (isNaN(val)) {
-      this.x.knownVars.splice(this.x.knownVars.indexOf(name), 1);
-      delete this.x[name];
-      this.y.knownVars.splice(this.y.knownVars.indexOf(name), 1);
-      delete this.y[name];
+      if (name !== 'y') {
+        this.x.knownVars.splice(this.x.knownVars.indexOf(name), 1);
+        delete this.x[name];
+      }
+      if (name !== 'x') {
+        this.y.knownVars.splice(this.y.knownVars.indexOf(name), 1);
+        delete this.y[name];
+      }
     } else {
       // TODO this line needs to be double checked for accuracy
       $('input' + '.' + namesController.shortToReadable(name).replace(' ', '-')).val(val);
@@ -48,14 +55,20 @@ function KinObj(name) {
         yComponent = val * Math.sin(convertToRadians(angle));
       }
 
-      if (!_.find(this.knownVars, function(known) { return name === known; })) {
-        this.x.knownVars.push(name);
-        this.x[name] = xComponent;
-        this.y.knownVars.push(name);
-        this.y[name] = yComponent;
+      if (!_.find(this.x.knownVars, function(known) { return name === known; })) {
+        if (name !== 'y') {
+          this.x.knownVars.push(name);
+          this.x[name] = xComponent;
+        }
+        if (name !== 'x') {
+          this.y.knownVars.push(name);
+          this.y[name] = yComponent;
+        }
       } else {
-        this.x[name] += xComponent;
-        this.y[name] += yComponent;
+        if (name !== 'y') 
+          this.x[name] += xComponent;
+        if (name !== 'x')
+          this.y[name] += yComponent;
       }
     }
   };
