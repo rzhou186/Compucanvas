@@ -92,17 +92,17 @@ canvasController.resizeCanvas = function(){
 
 consolesController.logConsole = function(message){
   $("#console").append("<p>" + message + "</p>");
-  $("#console").animate({ scrollTop : 1000000 }, "fast");
+  $(".console").animate({ scrollTop : 1000000 }, "fast");
 }
 
 consolesController.logAnswer = function(message){
   $("#answer").append("<p>" + message + "</p>");
-  $("#answer").animate({ scrollTop : 1000000 }, "fast");
+  $(".answer").animate({ scrollTop : 1000000 }, "fast");
 }
 
 consolesController.logBacktrace = function(message){
   $("#backtrace").append("<p>" + message + "</p>");
-  $("#backtrace").animate({ scrollTop : 1000000 }, "fast");
+  $(".backtrace").animate({ scrollTop : 1000000 }, "fast");
 }
 
 varsController.genObjectVars = function(kinObjName){
@@ -119,7 +119,7 @@ varsController.drawKinObjDiv = function(kinObjName){
   
   $('.input-bar .variables').html("")
   var varTemplate = $('.input_template_holder').children('.template').clone();
-  varTemplate.find('.label').text('Mass'+"=");
+  varTemplate.find('.label').text('Mass');
   varTemplate.find('input').addClass("Mass").attr('data-type',"Mass")
   template.find(".vars").append(varTemplate)
   varsController.insertVarOpt("Mass");
@@ -127,7 +127,7 @@ varsController.drawKinObjDiv = function(kinObjName){
   for(var i=0;i<properties.length;i++){
     varName = properties[i];
     varTemplate = $('.vector_input_template_holder').children('.template').clone();
-    varTemplate.find('.label').text(varName+"=");
+    varTemplate.find('.label').text(varName);
     varTemplate.find('input').addClass(varName.replace(" ","-")).attr('data-type',varName.replace(" ","-"))
     template.find(".vars").append(varTemplate)
     varsController.insertVarOpt(varName);
@@ -216,6 +216,5 @@ canvasController.renderAll = function(){
 }
 
 consolesController.clear = function(){
-  $('.rightbar').children().html("")
-
+  $('.rightbar').children(".contents").html("")
 }
