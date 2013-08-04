@@ -40,9 +40,15 @@
           <div class="known-vars box">
             <div class="heading">Environment Variables</div>
               <div class="contents">
-                <div class="label">Initial Time</div> <input class="Initial-Time var_input"></input>
+                <div class="label">Initial Time</div>
+                <span class="pull-right">
+                  <input class="Initial-Time var_input singletonInput"></input>
+                </span>
                 <div style="height: 10px;"></div>
-                <div class="label">Final Time</div> <input class="Final-Time var_input"></input>
+                <div class="label">Final Time</div>
+                <span class="pull-right">
+                  <input class="Final-Time var_input singletonInput"></input>
+                </span>
               </div>
             <div class="heading">Object Variables</div>
           </div>
@@ -81,14 +87,18 @@
     <div class="input_template_holder hidden">
       <div class="template"><p>
         <div class="label"></div>
-        <input class="var_input"></input>
+        <span class="pull-right objectInputs">
+          <input class="var_input singletonInput"></input>
+        </span>
       </div>
     </div>
     <div class="vector_input_template_holder hidden">
       <div class="template"><p>
         <div class="label"></div>
-        <input class="var_input magnitude"></input> MAG
-        <input class="var_input angle"></input> ANG
+        <span class="pull-right objectInputs">
+          &nbsp;MAG&nbsp; <input class="var_input magnitude"></input>
+          &nbsp;ANG&nbsp; <input class="var_input angle"></input>
+        </span>
       </div>
     </div>
     <div class="option_holder hidden">
