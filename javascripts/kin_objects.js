@@ -4,12 +4,16 @@ function KinObj(name) {
   this.name = name;
   this.knownVars = [];
   this.setVar = function(name, val) {
-    if (!_.find(this.knownVars, function(known) { return name === known; }))
+    if (!_.find(this.knownVars, function(known) { return name === known; })) {
       this.knownVars.push(name);
+    }
     this[name] = val;
-    console.log(this[name],"thisname")
-    console.log(name,"name")
-    $('input'+"."+namesController.shortToReadable(name).replace(" ","-")).val(this[name])
+
+    if (isNaN(val)) {
+      this.knownVars.splice(this.knownVars.indexOf(name), 1);
+      delete this[name];
+    }
+    else $('input'+"."+namesController.shortToReadable(name).replace(" ","-")).val(this[name])
   };
 };
 
