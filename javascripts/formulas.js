@@ -16,32 +16,32 @@ function Formula(varNames, expression) {
     "v1 = v0 + (a * (t1 - t0))"
   );
   formulas.push(formula);
-  formula.functions.push(function(o) {
-    var answer = o.v1 - (o.a * (o.t1 - o.t0));
-    o.setVar(formulas[0].varNames[0], answer);
+  formula.functions.push(function(o, dim) {
+    var answer = o[dim].v1 - (o[dim].a * (o[dim].t1 - o[dim].t0));
+    o.setVector(formulas[0].varNames[0], answer, dim);
     return answer;
   });
-  formula.functions.push(function(o) {
-    var answer = o.v0 + (o.a * (o.t1 - o.t0));
-    o.setVar(formulas[0].varNames[1], answer);
+  formula.functions.push(function(o, dim) {
+    var answer = o[dim].v0 + (o[dim].a * (o[dim].t1 - o[dim].t0));
+    o.setVector(formulas[0].varNames[1], answer, dim);
     return answer;
   });
-  formula.functions.push(function(o) {
-    var answer = (o.v1 - o.v0) / (o.t1 - o.t0);
-    o.setVar(formulas[0].varNames[2], answer);
+  formula.functions.push(function(o, dim) {
+    var answer = (o[dim].v1 - o[dim].v0) / (o[dim].t1 - o[dim].t0);
+    o.setVector(formulas[0].varNames[2], answer, dim);
     return answer;
   });
-  formula.functions.push(function(o) {
-    var answer = o.t1 - ((o.v1 - o.v0) / o.a);
-    o.setVar(formulas[0].varNames[3], answer);
+  formula.functions.push(function(o, dim) {
+    var answer = o[dim].t1 - ((o[dim].v1 - o[dim].v0) / o[dim].a);
+    o.setVector(formulas[0].varNames[3], answer);
     return answer;
   });
-  formula.functions.push(function(o) {
-    var answer = o.t0 + ((o.v1 - o.v0) / o.a);
-    o.setVar(formulas[0].varNames[4], answer);
+  formula.functions.push(function(o, dim) {
+    var answer = o[dim].t0 + ((o[dim].v1 - o[dim].v0) / o[dim].a);
+    o.setVector(formulas[0].varNames[4], answer);
     return answer;
   });
-
+/*
   // x1 = x0 + (v0 * (t1 - t0)) + (0.5 * a * (t1 - t0)^2)
   formula = new Formula(
     ['x0', 'x1', 'v0', 'a', 't0', 't1'],
@@ -68,25 +68,25 @@ function Formula(varNames, expression) {
     o.setVar(formulas[1].varNames[3], answer);
     return answer;
   });
-  formula.functions.push(function(o) {
+  formula.functions.push(function(o, dim) {
     var answer;
     // Quadratic formula
-    var possibilityOne = (-o.v0 + Math.sqrt(Math.pow(o.v0, 2) - (2 * o.a * (o.v1 - o.v0)))) / o.a;
-    var possibilityTwo = (-o.v0 - Math.sqrt(Math.pow(o.v0, 2) - (2 * o.a * (o.v1 - o.v0)))) / o.a;
+    var possibilityOne = (-o[dim].v0 + Math.sqrt(Math.pow(o[dim].v0, 2) - (2 * o[dim].a * (o[dim].v1 - o[dim].v0)))) / o[dim].a;
+    var possibilityTwo = (-o[dim].v0 - Math.sqrt(Math.pow(o[dim].v0, 2) - (2 * o[dim].a * (o[dim].v1 - o[dim].v0)))) / o[dim].a;
     if (possibilityOne >= 0) {
-      answer = o.t1 - possibilityOne;
+      answer = o[dim].t1 - possibilityOne;
     }
     else answer = o.t1 - possibilityTwo;
     o.setVar(formulas[1].varNames[4], answer);
     return answer;
   });
-  formula.functions.push(function(o) {
+  formula.functions.push(function(o, dim) {
     var answer;
     // Quadratic formula
-    var possibilityOne = (-o.v0 + Math.sqrt(Math.pow(o.v0, 2) - (2 * o.a * (o.v1 - o.v0)))) / o.a;
-    var possibilityTwo = (-o.v0 - Math.sqrt(Math.pow(o.v0, 2) - (2 * o.a * (o.v1 - o.v0)))) / o.a;
+    var possibilityOne = (-o[dim].v0 + Math.sqrt(Math.pow(o[dim].v0, 2) - (2 * o[dim].a * (o[dim].v1 - o[dim].v0)))) / o[dim].a;
+    var possibilityTwo = (-o[dim].v0 - Math.sqrt(Math.pow(o[dim].v0, 2) - (2 * o[dim].a * (o[dim].v1 - o[dim].v0)))) / o[dim].a;
     if (possibilityOne >= 0) {
-      answer = o.t0 + possibilityOne;
+      answer = o[dim].t0 + possibilityOne;
     }
     else answer = o.t0 + possibilityTwo;
     o.setVar(formulas[1].varNames[5], answer);
@@ -124,5 +124,5 @@ function Formula(varNames, expression) {
     o.setVar(formulas[2].varNames[4], answer);
     return answer;
   });
-
+*/
 })()

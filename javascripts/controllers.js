@@ -135,12 +135,12 @@ varsController.updateAllKinObjs = function(){
   {
     var kinObj = kinObjs[0]
     $('.kinObj[data-kin_obj_num=0] input').each(function(){
-      kinObj.setVar(namesController.readableToShort($(this).data('type').replace("-"," ")), parseFloat($(this).val()))
+      kinObj.addVector(namesController.readableToShort($(this).data('type').replace("-"," ")), parseFloat($(this).val()))
     })
     if ($('.Initial-Time').val().length >0)
-      kinObj.setVar('t0',parseFloat($('.Initial-Time').val()))
+      kinObj.addVector('t0',parseFloat($('.Initial-Time').val()))
     if ($('.Final-Time').val().length >0)
-      kinObj.setVar('t1',parseFloat($('.Final-Time').val()))
+      kinObj.addVector('t1',parseFloat($('.Final-Time').val()))
   }
 }
 
@@ -161,10 +161,10 @@ varsController.insertVarOpt = function(varName){
 canvasController.genSquare = function(){
   kinObjName = 'Object '+counter
   varsController.genObjectVars(kinObjName)
-  kinObjs[counter] = new KinObj(kinObjName);
-  obj = kinObjs[counter]
-  obj.setVar('t0', 0);
-  obj.setVar('a', -9.8);
+  kinObjs[0] = new KinObj(kinObjName);
+  obj = kinObjs[0]
+  obj.addVector('t0', 0);
+  obj.addVector('a', -9.8);
   counter++;
 }
 

@@ -28,7 +28,8 @@ $(document).ready(function(){
 });
 
 function getDesiredKinObj() {
-  return kinObjs[$(".kinObjects :selected").val()];
+  // return kinObjs[$(".kinObjects :selected").val()]; for multiple objs
+  return kinObjs[0];
 }
 
 function getDesiredVariable() {
@@ -240,7 +241,7 @@ $(document).ready(function () {
         canvasController.drawLine(cords)
         canvasController.saveLine(cords)
 
-        if (currentSquare.cords.x1<=x1<=currentSquare.cords.x2 && currentSquare.cords.y1<=y1<=currentSquare.cords.y2)
+        if (currentSquare.cords && currentSquare.cords.x1<=x1<=currentSquare.cords.x2 && currentSquare.cords.y1<=y1<=currentSquare.cords.y2)
         {
           // CALL VECTOR STUFF HERE
         }
@@ -256,14 +257,24 @@ $(document).ready(function () {
         canvasController.saveSquare(cords)
       }
 
-
       c.clearRect(0, 0, canvas.width, canvas.height)
       canvasController.renderAll()
-      // alert("You drew a shape with " + corners.length + " points!");
       
+
 
     })
 
   })
 
 })
+
+kinObj = new KinObj('obj');
+kinObj.addVector('v0', 0, 0);
+kinObj.addVector('a', -9.8, 90);
+kinObj.addVector('t0', 0);
+kinObj.addVector('t1', 5);
+console.log(computeFor('v1', kinObj, 'y'));
+console.log(kinObj.y.v1);
+
+
+// Add some way to map solution to correct units

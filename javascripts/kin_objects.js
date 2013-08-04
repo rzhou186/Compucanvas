@@ -2,9 +2,8 @@ kinObjs = []
 
 function KinObj(name) {
   this.name = name;
-  this.knownVars = [];
-  this.x = {};
-  this.y = {};
+  this.x = {knownVars: []};
+  this.y = {knownVars: []};
   this.setVar = function(name, val) {
     if (!_.find(this.knownVars, function(known) { return name === known; })) {
       this.knownVars.push(name);
@@ -20,17 +19,27 @@ function KinObj(name) {
 
   // This is for computed dimensional values; will only set on specified dimension
   this.setVector = function(name, val, dim) {
-    this[dim][name] = val;
+    if (dim) {
+      this[dim].knownVars.push(name);
+      this[dim][name] = val;
+    } else {
+      this.x.knownVars.push(name);
+      this.x[name] = val;
+      this.y.knownVars.push(name);
+      this.y[name] = val;
+    }
   };
 
   // This is for drawn values; will append value to both dimensions
   this.addVector = function(name, val, angle) {
-    if (isNaN(val) {
+    if (isNaN(val)) {
       this.x.knownVars.splice(this.x.knownVars.indexOf(name), 1);
       delete this.x[name];
       this.y.knownVars.splice(this.y.knownVars.indexOf(name), 1);
       delete this.y[name];
     } else {
+      // TODO this line needs to be double checked for accuracy
+      $('input' + '.' + namesController.shortToReadable(name).replace(' ', '-')).val(val);
       if (angle === undefined) {
         xComponent = val;
         yComponent = val;
@@ -51,13 +60,13 @@ function KinObj(name) {
     }
   };
 
-  this.get(varName, dim) {
+  this.get = function(varName, dim) {
     if (dim)
       return this[dim][varName];
-  }
+  };
 };
 
 function convertToRadians(degrees) {
-  return (Math.PI / 180) * degrees);
+  return (Math.PI / 180) * degrees;
 };
 
