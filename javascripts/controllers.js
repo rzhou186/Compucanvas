@@ -141,9 +141,9 @@ varsController.updateAllKinObjs = function(){
   {
     var kinObj = kinObjs[0]
     $('.kinObj[data-kin_obj_num=0] .template').each(function(){
-      if($(this).find('input').length == 1){
+      if($(this).find('input').length == 1 && $(this).find('input').val() != ""){
         kinObj.addVector(namesController.readableToShort($(this).find('input').data('type').replace("-"," ")), parseFloat($(this).find('input:first').val()))}
-      else{
+      else if($(this).find('input:first').val()!="" ){
         kinObj.addVector(
           namesController.readableToShort($(this).find('input:first').data('type').replace("-"," ")),
            parseFloat($(this).find('input:first').val()),
