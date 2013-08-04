@@ -3,8 +3,8 @@ body {
   font-size: 16px;
   color: #333333;
   padding: 40px 0px 40px 0px;
-  /*background-image: url("../images/tweed.png");
-  background-repeat: repeat;*/
+  background-image: url("../images/tweed.png");
+  background-repeat: repeat;
 }
 
 .row {
@@ -14,6 +14,8 @@ body {
 .topbar {
   height: 40px;
   background-color: #3498DB;
+  border: 1px solid #3498DB;
+  border-bottom: none;
 }
 
 .topbar-inner {
@@ -24,6 +26,7 @@ body {
 .box{
   overflow: auto;
   height:670px;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   border-top:none;
 }
@@ -31,6 +34,7 @@ body {
   border: 1px solid #ccc;
   border-top:none;
   overflow: auto;
+  background-color: #ffffff;
 }
 .small_box .contents {
   font-family: 'RalewayRegular', Helvetica, sans-serif;
@@ -50,6 +54,7 @@ body {
   padding-top: 7px;
   text-align: center;
   border: 1px solid #ccc;
+  background-color: #ffffff;
 }
 .row{
   width:100%;
