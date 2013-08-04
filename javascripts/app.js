@@ -285,17 +285,6 @@ $(document).ready(function () {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
 // Testing for now
 // (function() {
 //   kinObj = new KinObj('kinObj');
@@ -313,5 +302,14 @@ $(document).ready(function () {
 
 //   console.log('The solution is:', computeFor('v1', kinObj));
 // })
+
+kinObj = new KinObj('obj');
+kinObj.addVector('v0', 0, 0);
+kinObj.addVector('a', -9.8, 90);
+kinObj.addVector('t0', 0);
+kinObj.addVector('t1', 5);
+console.log(computeFor('v1', kinObj, 'y'));
+console.log(kinObj.y.v1);
+
 
 // Add some way to map solution to correct units
