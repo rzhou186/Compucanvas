@@ -237,12 +237,15 @@ $(document).ready(function () {
         var x2 = corners[corners_len-1].x
         var y2 = corners[corners_len-1].y
         var cords = {x1:x1,x2:x2,y1:y1,y2:y2}
-        canvasController.drawLine(cords)
-        canvasController.saveLine(cords)
 
-        if (currentSquare.cords && currentSquare.cords.x1<=x1<=currentSquare.cords.x2 && currentSquare.cords.y1<=y1<=currentSquare.cords.y2)
+        if(currentSquare.cords && currentSquare.cords.x1<=x1<=currentSquare.cords.x2 && currentSquare.cords.y1<=y1<=currentSquare.cords.y2)
         {
           varsController.drawVectorDiv()
+          canvasController.saveArrow(cords)
+        }
+        else{
+          console.log("not in")
+          canvasController.saveLine(cords)  
         }
       }
       else if(corners_len > 3){

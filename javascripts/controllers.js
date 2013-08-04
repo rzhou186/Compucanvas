@@ -114,7 +114,7 @@ varsController.genObjectVars = function(kinObjName){
   this.drawKinObjDiv(kinObjName)
 }
 
-properties = ["Initial Position","Final Position","Initial Velocity","Final Velocity","Acceleration"]
+properties = ["Initial Position","Final Position","Initial Velocity","Final Velocity","Acceleration","Final Time"]
 
 varsController.drawKinObjDiv = function(kinObjName){
   var template = $('.kin_obj_holder').find('.kinObj').clone()
@@ -211,6 +211,15 @@ canvasController.genSquare = function(){
 }
 
 canvasController.drawLine = function(cords){
+  console.log('line')
+  this.canvas.beginPath();
+  this.canvas.moveTo(cords.x1, cords.y1);
+  this.canvas.lineTo(cords.x2, cords.y2);
+  this.canvas.stroke(); 
+}
+
+canvasController.drawArrow = function(cords){
+  console.log('arrow')
   this.canvas.beginPath();
   canvas_arrow(this.canvas,cords.x1,cords.y1,cords.x2,cords.y2)
   this.canvas.stroke(); 
@@ -233,12 +242,14 @@ canvasController.drawSquare = function(cords){
   this.canvas.stroke();
 }
 
+canvasController.saveArrow = function(cords){
+  allObjs.push({type:'arrow',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}});
+}
+
 canvasController.saveLine = function(cords){
-  this.canvas.clearRect(0, 0, canvas.width, canvas.height)
   allObjs.push({type:'line',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}});
 }
 canvasController.saveSquare = function(cords){
-  this.canvas.clearRect(0, 0, canvas.width, canvas.height)
   allObjs.push({type:'square',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}});
   currentSquare = {type:'square',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}}
 }
@@ -249,6 +260,8 @@ canvasController.renderAll = function(){
       {this.drawLine(allObjs[i].cords)}
     else if(allObjs[i].type == 'square')
       {this.drawSquare(allObjs[i].cords)}
+    else if(allObjs[i].type == 'arrow')
+      { this.drawArrow(allObjs[i].cords)}
   }
 }
 
