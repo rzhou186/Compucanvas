@@ -1,0 +1,49 @@
+body {
+  font-family: 'RalewaySemiBold', Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333333;
+}
+
+.topbar {
+  height: 40px;
+  background-color: #3498DB;
+}
+
+.topbar-inner {
+  padding: 10px;
+  color: white;
+}
+
+.box{
+  height:300px;
+  border: 1px solid #ccc;
+  border-top:none;
+}
+.small_box{
+  height:200px;
+  border: 1px solid #ccc;
+  border-top:none;
+}
+.input-bar{
+  height:150px;
+  border: 1px solid #ccc;
+}
+.row{
+  width:100%;
+}
+.canvas_wrapper{
+  height:450px;
+}
+.center-box{
+  padding:0;
+  margin:0;
+}
+.col-lg-12,.col-lg-3{
+  padding-right: 5px;
+  padding-left: 5px;
+}
+#canvas,.upper-canvas,.lower-canvas{
+  width:100%;
+  height:100%;
+}

@@ -1,43 +1,26 @@
-body {
-  font-family: 'RalewaySemiBold', Helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 20px;
-  padding-top: 40px;
-  color: #333333;
-}
-
-.topbar {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  height: 40px;
-  width: 100%;
-  background-color: #3498DB;
-}
-
-.topbar-inner {
-  padding: 10px;
-  color: white;
-}
-
 .brand {
   font-size: 18px;
   text-align: center;
   letter-spacing: 5px;
 }
-
-.leftbar {
-  position: fixed;
-  left: 0px;
-  height: calc(100% - 40px);
-  width: 250px;
-  background-color: red;
+.input-bar{
+  height:150px;
+  border: 1px solid #ccc;
 }
-
-.rightbar {
-  position: fixed;
-  right: 0px;
-  height: calc(100% - 40px);
-  width: 250px;
-  background-color: green;
+.toolbox{
+  margin-top: 5px;
+  line-height: 10px;
+  font-size: 14px;
+  position: absolute;
+  z-index: 9999;
+}
+.var_input{
+  width:20px;
+}
+h4{
+  margin-top:0;
+  padding-left:5px;
+}
+.template{
+  padding-left:5px;
 }
