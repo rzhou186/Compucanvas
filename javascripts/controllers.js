@@ -1,9 +1,10 @@
-canvasController = {}
-varsController = {}
-canvasModel = {}
-consolesController = {}
-namesController = {}
-allObjs = []
+var canvasController = {}
+var varsController = {}
+var canvasModel = {}
+var consolesController = {}
+var namesController = {}
+var allObjs = []
+var currentSquare = {}
 
 var counter = 0;
 
@@ -188,6 +189,7 @@ canvasController.saveLine = function(cords){
 canvasController.saveSquare = function(cords){
   this.canvas.clearRect(0, 0, canvas.width, canvas.height)
   allObjs.push({type:'square',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}});
+  currentSquare = {type:'square',cords:{x1:cords.x1,y1:cords.y1,x2:cords.x2,y2:cords.y2}}
 }
 canvasController.renderAll = function(){
   width = $('.canvas_wrapper').width()

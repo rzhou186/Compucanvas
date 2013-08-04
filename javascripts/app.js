@@ -240,7 +240,10 @@ $(document).ready(function () {
         canvasController.drawLine(cords)
         canvasController.saveLine(cords)
 
-     
+        if (currentSquare.cords.x1<=x1<=currentSquare.cords.x2 && currentSquare.cords.y1<=y1<=currentSquare.cords.y2)
+        {
+          // CALL VECTOR STUFF HERE
+        }
       }
       else if(corners_len > 3){
         var x1 = mouse_start.x
