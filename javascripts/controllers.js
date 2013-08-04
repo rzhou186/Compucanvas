@@ -158,21 +158,12 @@ varsController.insertVarOpt = function(varName){
 }
 
 canvasController.genSquare = function(){
-  // var circle = new fabric.Circle({
-  //   radius:10,
-  //   fill:'black',
-  //   left:canvasModel.width/2,
-  //   top:canvasModel.height/2
-  // })
-  // canvasModel.canvas.add(circle);
-  // canvasModel.canvas.renderAll();
-
   kinObjName = 'Object '+counter
   varsController.genObjectVars(kinObjName)
   kinObjs[counter] = new KinObj(kinObjName);
   obj = kinObjs[counter]
   obj.setVar('t0', 0);
-  // obj.setVar('a', -9.8);
+  obj.setVar('a', -9.8);
   counter++;
 }
 

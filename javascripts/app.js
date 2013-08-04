@@ -8,14 +8,6 @@
 
 
 $(document).ready(function(){
-  // var canvas = new fabric.Canvas('canvas');
-  
-  // $('.circle_label').click(function(){
-  //   canvasController.genCircle()
-  // });
-  // $('.line_label').click(function(){
-  //   canvasController.placeLine()
-  // });
   $('#compute').click(function(){
     
     consolesController.clear();
@@ -238,31 +230,17 @@ $(document).ready(function () {
         corners.push(line[line.length - 1])
       }
 
-      // c.strokeStyle = 'rgba(0, 0, 255, 0.5)'
-      // c.beginPath()
-      // c.moveTo(corners[0].x, corners[0].y)
-      // for (var i = 1; i < corners.length; i++) {
-      //   c.lineTo(corners[i].x, corners[i].y)
-      // }
-      // c.stroke()
-
-
-      // c.fillStyle = 'rgba(255, 0, 0, 0.5)'
-      // for (var i = 0; i < corners.length; i++) {
-      //   c.beginPath()
-      //   c.arc(corners[i].x, corners[i].y, 4, 0, 2 * Math.PI, false)
-      //   c.fill()
-      // }
-
       var corners_len = corners.length
       if(corners_len < 4){
-        var x1 = corners[0].x
+        var x1 = mouse_start.x
+        var y1 = mouse_start.y
         var x2 = corners[corners_len-1].x
-        var y1 = corners[0].y 
         var y2 = corners[corners_len-1].y
         var cords = {x1:x1,x2:x2,y1:y1,y2:y2}
         canvasController.drawLine(cords)
         canvasController.saveLine(cords)
+
+     
       }
       else if(corners_len > 3){
         var x1 = mouse_start.x
@@ -271,8 +249,11 @@ $(document).ready(function () {
         var y2 = _.max(corners, function(point) {return Math.abs(y1 - point.y) }).y
         var cords = {x1:x1,x2:x2,y1:y1,y2:y2}
         canvasController.drawSquare(cords)
+        canvasController.genSquare()
         canvasController.saveSquare(cords)
       }
+
+
       c.clearRect(0, 0, canvas.width, canvas.height)
       canvasController.renderAll()
       // alert("You drew a shape with " + corners.length + " points!");
@@ -283,35 +264,3 @@ $(document).ready(function () {
   })
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Testing for now
-// (function() {
-//   kinObj = new KinObj('kinObj');
-//   kinObj.setVar('t0', 0);
-//   kinObj.setVar('t1', 5);
-//   kinObj.setVar('v0', 0);
-//   kinObj.setVar('v1', -49);
-//   kinObj.setVar('a', -9.8);
-//   kinObj.setVar('m', 5);
-
-//   console.log("Known variables: ");
-//   for (x in kinObj.knownVars) {
-//     console.log(kinObj.knownVars[x] + " = " + kinObj[kinObj.knownVars[x]]);
-//   }
-
-//   console.log('The solution is:', computeFor('v1', kinObj));
-// })
-
-// Add some way to map solution to correct units
