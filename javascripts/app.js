@@ -242,7 +242,7 @@ $(document).ready(function () {
 
         if (currentSquare.cords && currentSquare.cords.x1<=x1<=currentSquare.cords.x2 && currentSquare.cords.y1<=y1<=currentSquare.cords.y2)
         {
-          varsController.addVector
+          varsController.drawVectorDiv()
         }
       }
       else if(corners_len > 3){

@@ -7,6 +7,7 @@ var allObjs = []
 var currentSquare = {}
 
 var counter = 0;
+var vector_counter = 0;
 
 namesController.shortToReadable = function(short_var){
   switch(short_var)
@@ -136,6 +137,21 @@ varsController.drawKinObjDiv = function(kinObjName){
   $('.known-vars').append(template)
 }
 
+
+varsController.drawVectorDiv = function(){
+  console.log("running")
+  var template = $('.drawn_vector_holder').find('.vector').clone()
+  template.find('.name').html('Vector '+vector_counter)
+  template.attr('data-vector_num',vector_counter)
+
+  varTemplate = $('.vector_input_template_holder').children('.template').clone();
+  varTemplate.find('.label').text('Force')
+  template.find('.vars').html(varTemplate)
+
+  $('.known-vars').append(template)
+  vector_counter++;
+}
+
 varsController.updateAllKinObjs = function(){
   for(i=0;i<kinObjs.length;i++)
   {
@@ -186,6 +202,9 @@ canvasController.drawLine = function(cords){
   this.canvas.beginPath();
   this.canvas.moveTo(cords.x1, cords.y1);
   this.canvas.lineTo(cords.x2, cords.y2);
+  this.canvas.lineTo(cords.x2-40*Math.cos(convertToRadians(45)), cords.y2+40*Math.sin(convertToRadians(45)));
+  this.canvas.lineTo(cords.x2, cords.y2);
+  this.canvas.lineTo(cords.x2+40*Math.cos(convertToRadians(30)), cords.y2+40*Math.sin(convertToRadians(30)));
   this.canvas.stroke(); 
 }
 
