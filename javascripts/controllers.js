@@ -67,6 +67,21 @@ canvasController.resizeCanvas = function(){
   // Do error checking?
   // Clear console, answer, and explanation?
 
+consolesController.logConsole = function(message){
+  $(".console").append("<p>" + message + "</p>");
+  $(".console").animate({ scrollTop : 1000000 }, "fast");
+}
+
+consolesController.logAnswer = function(message){
+  $(".answer").append("<p>" + message + "</p>");
+  $(".answer").animate({ scrollTop : 1000000 }, "fast");
+}
+
+consolesController.logBacktrace = function(message){
+  $(".backtrace").append("<p>" + message + "</p>");
+  $(".backtrace").animate({ scrollTop : 1000000 }, "fast");
+}
+
 varsController.genObjectVars = function(kinObjName){
   this.insertObjectOpt(kinObjName)
   this.drawKinObjDiv(kinObjName)
@@ -96,13 +111,13 @@ varsController.updateAllKinObjs = function(){
   for(i=0;i<kinObjs.length;i++)
   {
     var kinObj = kinObjs[0]
-    $('.kinObj[data-kin_obj_num=0] input').filter(function() { return this.value != ""; }).each(function(){
-      kinObj.setVar(namesController.readableToShort($(this).data('type').replace("-"," ")),$(this).val())
+    $('.kinObj[data-kin_obj_num=0] input').each(function(){
+      kinObj.setVar(namesController.readableToShort($(this).data('type').replace("-"," ")), parseFloat($(this).val()))
     })
     if ($('.Initial-Time').val().length >0)
-      kinObj.setVar('t0',parseInt($('.Initial-Time').val()))
+      kinObj.setVar('t0',parseFloat($('.Initial-Time').val()))
     if ($('.Final-Time').val().length >0)
-      kinObj.setVar('t1',parseInt($('.Final-Time').val()))
+      kinObj.setVar('t1',parseFloat($('.Final-Time').val()))
   }
 }
 

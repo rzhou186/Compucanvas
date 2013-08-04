@@ -24,7 +24,6 @@ $(document).ready(function(){
 
     // update all variables
     varsController.updateAllKinObjs();
-    console.log(kinObjs,"KIND OBJS HERE")
 
     // error checking
 
@@ -33,7 +32,7 @@ $(document).ready(function(){
     var desiredVar = getDesiredVariable();
 
     // run computation
-    console.log('The solution is:', computeFor(desiredVar, desiredKinObj));
+    consolesController.logAnswer('The solution is ' + computeFor(desiredVar, desiredKinObj));
 
   });
 });
