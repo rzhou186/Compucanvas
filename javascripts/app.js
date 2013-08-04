@@ -267,3 +267,32 @@ $(document).ready(function () {
 
 })
 
+/* Testing Obj
+*/
+kinObj = new KinObj('obj');
+kinObj.addVector('m', 1);
+console.log(computeFor('m', kinObj), 'immediate recovery mass');
+/* Testing two step force!
+kinObj.addVector('m', 1);
+kinObj.addVector('f', 9.8, -90);
+kinObj.addVector('t0', 0);
+kinObj.addVector('t1', 5);
+kinObj.addVector('v0', 0);
+console.log(computeFor('v1', kinObj), 'two step velocity calc');
+*/
+/* Basic Force Calculation
+kinObj.addVector('m', 1);
+kinObj.addVector('a', -9.8, 90);
+console.log(computeFor('f', kinObj), 'aggregate Force');
+console.log(computeFor('f', kinObj, 'y'), 'y Force');
+*/
+/* formula0 test
+kinObj.addVector('v0', 0, 0);
+kinObj.addVector('a', -9.8, 90);
+kinObj.addVector('t0', 0);
+kinObj.addVector('t1', 5);
+console.log(computeFor('v1', kinObj));
+console.log(computeFor('v1', kinObj, 'x'));
+console.log(computeFor('v1', kinObj, 'y'));
+*/
+
