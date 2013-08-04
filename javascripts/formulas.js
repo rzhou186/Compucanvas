@@ -48,7 +48,7 @@ function Formula(varNames, expression) {
   );
   formulas.push(formula);
   formula.functions.push(function(o, dim) {
-    var answer = o[dim].x1 - (o[dim].v0 * (o[dim].t1 - o[dim].t0)) - (0.5 * o[dim].a * Math.pow((o[dim].t1 - o[dim].t0), 2));
+    var answer = o[dim].x1 - (o[dim].v0 * (o[dim].t1 - o[dim].t0)) + (0.5 * o[dim].a * Math.pow((o[dim].t1 - o[dim].t0), 2));
     o.setVector(formulas[1].varNames[0], answer, dim);
     return answer;
   });
