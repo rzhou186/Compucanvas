@@ -8,7 +8,7 @@
       if (!isUnknown(desiredVar, obj, dim)) {
         consolesController.logConsole("Variable found. Finishing computation...");
         consolesController.logConsole("Computation complete.");
-        return (obj.get(desiredVar, dim) + " " + consolesController.shortToUnits(desiredVar));
+        return obj.get(desiredVar, dim);
       }
       consolesController.logConsole("Variable not known. Preparing for new computation...");
       for (z in dimensions) {
@@ -38,9 +38,9 @@
           validComputationFound = true;
         }
       }
-      if (!validComputationFound)
+      if (!validComputationFound){
         consolesController.logConsole("No valid computations found.");
-        break;
+        break}
     }
 
     consolesController.logConsole("Computation unsuccessful. Did you make a mistake?");
