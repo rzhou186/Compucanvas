@@ -81,7 +81,10 @@ function KinObj(name) {
     if (dim) {
       val = this[dim][varName];
     } else {
-      val = Math.sqrt(Math.pow(this.x[varName], 2) + Math.pow(this.y[varName], 2));
+      if (varName[0] === 't' || varName[0] === 'm')
+        val = this.x[varName];
+      else 
+        val = Math.sqrt(Math.pow(this.x[varName], 2) + Math.pow(this.y[varName], 2));
     }
     return val.toFixed(1);
   };

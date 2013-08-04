@@ -266,5 +266,7 @@ canvasController.renderAll = function(){
 }
 
 consolesController.clear = function(){
-  $('.rightbar').children(".contents").html("")
+  $('.console').children(".contents").html("")
+  $('.answer').children(".contents").html("")
+  $('.backtrace').children(".contents").html("")
 }
