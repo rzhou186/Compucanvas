@@ -50,6 +50,27 @@ namesController.readableToShort = function(long_var){
   };
 }
 
+namesController.shortToUnits = function(short_var){
+  switch(short_var)
+  {
+    case "m":
+      return "kg"
+    case "v0":
+    case "v1":
+      return "m/s"
+    case "a":
+      return "m/s^2"
+    case "x0":
+    case "x1":
+      return "m"
+    case "t0":
+    case "t1":
+      return "s"
+    default:
+      return ""
+  };
+}
+
 canvasController.resizeCanvas = function(){
   var height = $('.canvas_wrapper').height();
   var width = $('.canvas_wrapper').width();
@@ -150,7 +171,7 @@ canvasController.genCircle = function(){
   kinObjs[counter] = new KinObj(kinObjName);
   obj = kinObjs[counter]
   obj.setVar('t0', 0);
-  obj.setVar('a', -9.8);
+  // obj.setVar('a', -9.8);
   counter++;
 }
 

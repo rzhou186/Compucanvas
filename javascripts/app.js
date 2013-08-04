@@ -32,7 +32,7 @@ $(document).ready(function(){
     var desiredVar = getDesiredVariable();
 
     // run computation
-    consolesController.logAnswer('The solution is ' + computeFor(desiredVar, desiredKinObj));
+    consolesController.logAnswer('The solution is ' + computeFor(desiredVar, desiredKinObj) + " " + namesController.shortToUnits(desiredVar) + ".");
 
   });
 });
