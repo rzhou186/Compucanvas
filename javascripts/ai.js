@@ -4,10 +4,10 @@
   function computeFor(desiredVar, obj, dim) {
     while (true) {
       var validComputationFound = false;
-      // Check if the desired variable is already known
       consolesController.logConsole("Checking if desired variable is known...");
       if (!isUnknown(desiredVar, obj, dim)) {
         consolesController.logConsole("Variable found. Terminating computation...");
+        consolesController.logConsole("Computation complete.");
         return obj.get(desiredVar, dim);
       }
       consolesController.logConsole("Variable not known. Preparing for new computation...");
@@ -16,7 +16,7 @@
         consolesController.logConsole("Initiating new cycle of formula computations...");
         for (x in formulas) {
           var formula = formulas[x];
-          consolesController.logConsole("Observing the following formula: " + formula.expression);
+          consolesController.logConsole("Parsing following formula: " + formula.expression);
           var desiredVarIndex = -1;
           for (i in formula.varNames) {
             if (isUnknown(formula.varNames[i], obj, dim)) {
@@ -31,9 +31,9 @@
           if (desiredVarIndex === -1) {
             continue;
           }
-          consolesController.logBacktrace(formula.expression);
-          consolesController.logConsole("Solution found.");
           formula.functions[desiredVarIndex](obj, dim)
+          consolesController.logBacktrace(formula.expression);
+          consolesController.logConsole("Formula successful. Adding variable to known vars...");
           validComputationFound = true;
         }
       }
